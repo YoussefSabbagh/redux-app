@@ -1,12 +1,39 @@
-import React from 'react';
-import './App.css';
+import {
+  Cart,
+  FlexContent,
+  Footer,
+  Hero,
+  Navbar,
+  Sales,
+  Stories,
+} from './components';
 
-function App() {
+import {
+  footerAPI,
+  heroapi,
+  highlight,
+  popularsales,
+  sneaker,
+  story,
+  topratesales,
+} from './data/data.js';
+
+const App = () => {
   return (
-    <div className="flex justify-center items-center">
-      <header className="text-4xl text-center text-red-500">Hello World</header>
-    </div>
+    <>
+      <Navbar />
+      <Cart />
+      <main className="flex flex-col gap-16">
+        <Hero heroapi={heroapi} />
+        <Sales productsGroup={popularsales} ifExists />
+        <FlexContent data={highlight} ifExists />
+        <Sales productsGroup={topratesales} />
+        <FlexContent data={sneaker} />
+        <Stories story={story} />
+      </main>
+      <Footer footerAPI={footerAPI} />
+    </>
   );
-}
+};
 
 export default App;
